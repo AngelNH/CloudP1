@@ -26,7 +26,7 @@ public class Config {
   // Restrict the topics that should be indexed. For example, when this is
   // set to 'X', you should only index topics that start with an X.
   // Set this to "A" for local work, and to "Ar" for cloud tests..
-  public static final String filter = "";
+  public static final String filter = "A";
   
   public static final String titleFileName = "labels_en.ttl";
   public static final String imageFileName = "images_en.ttl";

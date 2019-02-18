@@ -21,6 +21,20 @@ public class IndexImages {
   {
     // TODO: This method should load all images and titles 
     //       into the two key-value stores.
+
+    //TODO: check again if this is correct
+    //Load the labels into titleStore
+    parser = new ParseTriples(titleFileName);
+    Triple triple;
+    do {
+      triple = parser.getNextTriple();
+      if(triple != null && triple.get(2).startsWith(Config.filter)){
+        titleStore.addToSet(triple.get(0),triple.get(2));
+      }
+    }while (triple != null);
+    //Load Images into the imageStore
+
+
   }
   
   public void close() {
@@ -29,8 +43,7 @@ public class IndexImages {
   
   public static void main(String args[])
   {
-    // TODO: Add your own name here
-    System.out.println("*** Alumno: _____________________ (Exp: _________ )");
+    System.out.println("*** Alumno:Miguel Angel Nuño  (Exp:is704713 )");
     try {
 
       IKeyValueStorage imageStore = KeyValueStoreFactory.getNewKeyValueStore(Config.storeType, 
