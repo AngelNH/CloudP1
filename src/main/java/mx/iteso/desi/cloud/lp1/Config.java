@@ -17,7 +17,8 @@ public class Config {
   // The type of key/value store you are using. Initially set to BERKELEY;
   // will be changed to DynamoDB in some phases.
   public static final KeyValueStoreFactory.STORETYPE storeType = KeyValueStoreFactory.STORETYPE.BERKELEY;
-  public static final String pathToDatabase = "c:/dbd";
+  public static final String pathToDatabase = "C:\\Users\\Cursos.T20209\\Documents\\Cloud\\Dataset";
+  //C:\Users\Cursos.T20209\Documents\Cloud\Dataset
     
   // Set to your Amazon REGION tu be used
   public static final Regions amazonRegion = Regions.US_WEST_2;
@@ -28,7 +29,7 @@ public class Config {
   // Set this to "A" for local work, and to "Ar" for cloud tests..
   public static final String filter = "A";
   
-  public static final String titleFileName = "labels_en.ttl";
-  public static final String imageFileName = "images_en.ttl";
+  public static final String titleFileName = "C:\\Users\\Cursos.T20209\\Documents\\Cloud\\Dataset\\labels_en.ttl";
+  public static final String imageFileName = "C:\\Users\\Cursos.T20209\\Documents\\Cloud\\Dataset\\images_en.ttl";
     
 }
