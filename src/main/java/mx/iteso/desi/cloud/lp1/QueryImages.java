@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.HashSet;
 import mx.iteso.desi.cloud.keyvalue.KeyValueStoreFactory;
 import mx.iteso.desi.cloud.keyvalue.IKeyValueStorage;
+import mx.iteso.desi.cloud.keyvalue.PorterStemmer;
 
 public class QueryImages {
   IKeyValueStorage imageStore;
@@ -20,6 +21,17 @@ public class QueryImages {
   {
     // TODO: Return the set of URLs that match the given word,
     //       or an empty set if there are no matches
+    String steamWord = PorterStemmer.stem(word);
+    System.out.println("My steamed word "+steamWord);
+    if(titleStore.exists(steamWord)){
+      HashSet<String> hashSet = new HashSet<>();
+      Set<String> titleSet = titleStore.get(steamWord);
+      Iterator<String> titleIterator = titleSet.iterator();
+      while(titleIterator.hasNext()){
+        String result = titleIterator.next();
+        System.out.println(result);
+      }
+    }
     return new HashSet<String>();
   }
         
@@ -36,6 +48,27 @@ public class QueryImages {
     // TODO: get KeyValueStores
     IKeyValueStorage imageStore = null;
     IKeyValueStorage titleStore = null;
+    try {
+
+    IndexImages indexImages = new IndexImages(imageStore,titleStore);
+
+
+      imageStore = KeyValueStoreFactory.getNewKeyValueStore(Config.storeType,
+              "images");
+      titleStore = KeyValueStoreFactory.getNewKeyValueStore(Config.storeType,
+              "terms");
+
+
+      IndexImages indexer = new IndexImages(imageStore, titleStore);
+      indexer.run(Config.imageFileName, Config.titleFileName);
+      System.out.println("Indexing completed");
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.err.println("Failed to complete the indexing pass -- exiting");
+    }
+
+    System.out.println("Indexing completed");
     
     QueryImages myQuery = new QueryImages(imageStore, titleStore);
 

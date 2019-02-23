@@ -25,21 +25,26 @@ public class IndexImages {
         Triple triple;
         do {
             triple = parser.getNextTriple();
-            //System.out.println("Dupla Images: "+triple.get(2).contains("/"+Config.filter)+"  ---  "+triple.get(1)+"  ---  "+triple.get(2));
             if(triple != null && triple.get(2).contains("/"+Config.filter)){
-                //System.out.println("ImageToStorage: "+triple.get(0)+" --- "+triple.get(1)+" --- "+triple.get(2));
-                //imageStore.addToSet(triple.get(0),triple.get(2));
+                imageStore.addToSet(triple.get(0),triple.get(2));
             }
         }while (triple != null);
         //Load labels into the titleStore
         parser = new ParseTriples(titleFileName);
         do {
             triple = parser.getNextTriple();
-            //System.out.println("Dupla - Labels: "+triple.get(0)+"  ---  "+triple.get(1)+" --- "+triple.get(2));
-            //if( triple != null && imageStore.exists(triple.get(0))){
-            if( triple != null && triple.get(0).contains("/"+Config.filter)){
-                // http://dbpedia.org/resource/<Recursos>
-                //titleStore.addToSet(triple.get(0),triple.get(2));
+            if( triple != null && imageStore.exists(triple.get(0))){
+                String [] labels = triple.get(2).split(" |, ");
+                for (String s: labels
+                     ) {
+                    if(PorterStemmer.stem(s)!= "Invalid term") {
+                        //System.out.println(PorterStemmer.stem(s));
+                        titleStore.addToSet(PorterStemmer.stem(s), triple.get(2));
+                    }else {
+                        //System.out.println(s);
+                        titleStore.addToSet(s,triple.get(2));
+                    }
+                }
                 System.out.println("TitleToStorage: "+triple.get(0)+" --- "+triple.get(2));
             }
         }while(triple != null);
