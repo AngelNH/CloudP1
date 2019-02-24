@@ -39,13 +39,13 @@ public class IndexImages {
                      ) {
                     if(PorterStemmer.stem(s)!= "Invalid term") {
                         //System.out.println(PorterStemmer.stem(s));
-                        titleStore.addToSet(PorterStemmer.stem(s), triple.get(2));
+                        titleStore.addToSet(PorterStemmer.stem(s), triple.get(0));
                     }else {
                         //System.out.println(s);
-                        titleStore.addToSet(s,triple.get(2));
+                        titleStore.addToSet(s,triple.get(0));
                     }
                 }
-                System.out.println("TitleToStorage: "+triple.get(0)+" --- "+triple.get(2));
+                //System.out.println("TitleToStorage: "+triple.get(0)+" --- "+triple.get(2));
             }
         }while(triple != null);
     }
@@ -58,7 +58,7 @@ public class IndexImages {
 
     public static void main(String args[])
     {
-        System.out.println("*** Alumno:Miguel Angel Nuño  (Exp:is704713 )");
+        System.out.println("*** Alumno:_______________ (Exp:___________ )");
         try {
 
             IKeyValueStorage imageStore = KeyValueStoreFactory.getNewKeyValueStore(Config.storeType,

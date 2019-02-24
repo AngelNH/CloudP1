@@ -22,15 +22,25 @@ public class QueryImages {
     // TODO: Return the set of URLs that match the given word,
     //       or an empty set if there are no matches
     String steamWord = PorterStemmer.stem(word);
-    System.out.println("My steamed word "+steamWord);
-    if(titleStore.exists(steamWord)){
-      HashSet<String> hashSet = new HashSet<>();
-      Set<String> titleSet = titleStore.get(steamWord);
-      Iterator<String> titleIterator = titleSet.iterator();
-      while(titleIterator.hasNext()){
-        String result = titleIterator.next();
-        System.out.println(result);
-      }
+    if(steamWord.startsWith(Config.filter)) {
+        System.out.println("My steamed word " + steamWord);
+        if (titleStore.exists(steamWord)) {
+            HashSet<String> hashSet = new HashSet<>();
+            Set<String> titleSet = titleStore.get(steamWord);
+            Iterator<String> titleIterator = titleSet.iterator();
+            while (titleIterator.hasNext()) {
+                String result = titleIterator.next();
+                //System.out.println("Title: "+result);
+                Set<String> imageSet = imageStore.get(result);
+                Iterator<String> imageIterator = imageSet.iterator();
+                while (imageIterator.hasNext()) {
+                    String imageUrl = imageIterator.next();
+                    //System.out.println("URL Images: "+imageUrl);
+                    hashSet.add(imageUrl);
+                }
+            }
+            return hashSet;
+        }
     }
     return new HashSet<String>();
   }
@@ -38,6 +48,8 @@ public class QueryImages {
   public void close()
   {
     // TODO: Close the databases
+    imageStore.close();
+    titleStore.close();
   }
 	
   public static void main(String args[]) 
@@ -45,7 +57,7 @@ public class QueryImages {
     // TODO: Add your own name here
     System.out.println("*** Alumno: _____________________ (Exp: _________ )");
     
-    // TODO: get KeyValueStores
+    // TODO: get KeyValueStores - Noy sure if i had to get it like this.
     IKeyValueStorage imageStore = null;
     IKeyValueStorage titleStore = null;
     try {
@@ -61,13 +73,12 @@ public class QueryImages {
 
       IndexImages indexer = new IndexImages(imageStore, titleStore);
       indexer.run(Config.imageFileName, Config.titleFileName);
-      System.out.println("Indexing completed");
+      //System.out.println("Indexing completed");
 
     } catch (Exception e) {
       e.printStackTrace();
       System.err.println("Failed to complete the indexing pass -- exiting");
     }
-
     System.out.println("Indexing completed");
     
     QueryImages myQuery = new QueryImages(imageStore, titleStore);

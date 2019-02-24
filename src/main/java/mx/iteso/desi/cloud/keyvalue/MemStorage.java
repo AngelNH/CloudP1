@@ -15,7 +15,6 @@ public class MemStorage extends BasicKeyValueStore {
 		Set<String> theSet = new HashSet<String>();
 		if (storage.containsKey(search))
 			theSet.addAll(storage.get(search));
-		
 		return theSet;
 	}
 
