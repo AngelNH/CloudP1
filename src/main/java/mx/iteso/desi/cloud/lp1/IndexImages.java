@@ -21,8 +21,10 @@ public class IndexImages {
         // TODO: This method should load all images and titles
         //       into the two key-value stores.
         //Load the labels into titleStore
+
         parser = new ParseTriples(imageFileName);
         Triple triple;
+        /*
         do {
             triple = parser.getNextTriple();
             if(triple != null && triple.get(2).contains("/"+Config.filter)){
@@ -30,24 +32,38 @@ public class IndexImages {
             }
         }while (triple != null);
         //Load labels into the titleStore
+        */
         parser = new ParseTriples(titleFileName);
         do {
             triple = parser.getNextTriple();
-            if( triple != null && imageStore.exists(triple.get(0))){
-                String [] labels = triple.get(2).split(" |, ");
-                for (String s: labels
-                     ) {
-                    if(PorterStemmer.stem(s)!= "Invalid term") {
-                        //System.out.println(PorterStemmer.stem(s));
-                        titleStore.addToSet(PorterStemmer.stem(s), triple.get(0));
-                    }else {
-                        //System.out.println(s);
-                        titleStore.addToSet(s,triple.get(0));
+            //System.out.println(imageStore.exists(triple.get(0)));
+            if( triple != null ){
+                if(triple.get(0).contains("/"+Config.filter)) {
+                    //System.out.println(triple.get(0));
+                    if(imageStore.exists(triple.get(0))) {
+                        String[] labels = triple.get(2).split(" |, ");
+                        for (String s : labels
+                        ) {
+                            if (PorterStemmer.stem(s.toLowerCase()) != "Invalid term") {
+                                //System.out.println(PorterStemmer.stem(s));
+                                titleStore.addToSet(PorterStemmer.stem(s.toLowerCase()), triple.get(0));
+                            } else {
+                                //System.out.println(s);
+                                titleStore.addToSet(s.toLowerCase(), triple.get(0));
+                            }
+                        }
                     }
                 }
                 //System.out.println("TitleToStorage: "+triple.get(0)+" --- "+triple.get(2));
             }
         }while(triple != null);
+        /*
+        for (String s:imageStore.get("http://dbpedia.org/resource/American_Registry_for_Internet_Numbers")
+             ) {
+            System.out.println("The result is  "+s);
+        }
+        System.out.println(imageStore.exists("http://dbpedia.org/resource/American_Registry_for_Internet_Numbers")+" y el tamaño es: " +imageStore.get("http://dbpedia.org/resource/American_Registry_for_Internet_Numbers").isEmpty());
+        */
     }
 
     public void close() {

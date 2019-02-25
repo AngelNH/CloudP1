@@ -22,7 +22,7 @@ public class Config {
   //C:\Users\Cursos.T20209\Documents\Cloud\Dataset
     
   // Set to your Amazon REGION tu be used
-  public static final Regions amazonRegion = Regions.US_WEST_2;
+  public static final Regions amazonRegion = Regions.US_WEST_1;
   
     
   // Restrict the topics that should be indexed. For example, when this is

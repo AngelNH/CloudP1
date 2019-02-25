@@ -72,7 +72,7 @@ public class QueryImages {
 
 
       IndexImages indexer = new IndexImages(imageStore, titleStore);
-      indexer.run(Config.imageFileName, Config.titleFileName);
+      //indexer.run(Config.imageFileName, Config.titleFileName);
       //System.out.println("Indexing completed");
 
     } catch (Exception e) {

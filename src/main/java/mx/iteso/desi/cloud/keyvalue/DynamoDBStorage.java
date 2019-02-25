@@ -1,25 +1,31 @@
 package mx.iteso.desi.cloud.keyvalue;
 
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
-import com.amazonaws.services.dynamodbv2.document.Item;
-import com.amazonaws.services.dynamodbv2.document.PrimaryKey;
-import com.amazonaws.services.dynamodbv2.document.Table;
-import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
-import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.document.*;
+import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
+import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
+import com.amazonaws.services.dynamodbv2.model.*;
 import mx.iteso.desi.cloud.lp1.Config;
 
 import java.util.*;
 
 
+
+
+
 public class DynamoDBStorage extends BasicKeyValueStore {
 
+    public static final String PRIMARY_KEY = "keyword";
+    public static final String SORT_KEY = "inx";
     String dbName;
-
+    DynamoDB dynamoDB;
+    Table table;
     // Simple autoincrement counter to make sure we have unique entries
     int inx;
 
@@ -27,48 +33,68 @@ public class DynamoDBStorage extends BasicKeyValueStore {
 
     public DynamoDBStorage(String dbName) {
         this.dbName = dbName;
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder
+                .standard()
+                .withRegion(Config.amazonRegion)
+                .withCredentials(new DefaultAWSCredentialsProviderChain())
+                .build();
+        dynamoDB = new DynamoDB(client);
+        ListTablesResult tables = client.listTables();
+
+        //Table aux = dynamoDB.getTable("terms");
+        //aux.delete();
+        /*
+        for (String t: tables.getTableNames()
+             ) {
+            System.out.println(t);
+        }
+        */
+        if(!tables.getTableNames().contains(dbName)){
+            try {
+                System.out.println("Not table, creating new table named: "+dbName+"...");
+                table = dynamoDB.createTable(dbName,
+                        Arrays.asList(new KeySchemaElement(PRIMARY_KEY,KeyType.HASH),
+                                new KeySchemaElement(SORT_KEY,KeyType.RANGE)),
+                    Arrays.asList(new AttributeDefinition(PRIMARY_KEY,ScalarAttributeType.S),
+                            new AttributeDefinition(SORT_KEY,ScalarAttributeType.N)),
+                    new ProvisionedThroughput(1L,1L));
+                table.waitForActive();
+
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+            }
+        }else{
+            try {
+                System.out.println("Table exist, retrieving table...");
+                table = dynamoDB.getTable(dbName);
+                table.waitForActive();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+
+
+        }
+
     }
 
     @Override
     public Set<String> get(String search) {
-        AmazonDynamoDB ddb = AmazonDynamoDBClientBuilder.standard().build();
-        DynamoDB dynamoDB = new DynamoDB(ddb);
-
-        HashMap<String,AttributeValue> key_to_get = new HashMap<String, AttributeValue>();
-        key_to_get.put("keyword", new AttributeValue(search));
-
-        GetItemRequest request = null;
-
-            request = new GetItemRequest()
-                    .withKey(key_to_get)
-                    .withTableName(dbName);
-
-
-        //final AmazonDynamoDB ddb = AmazonDynamoDBClientBuilder.defaultClient();
-
-        try {
-            Map<String,AttributeValue> returned_item =
-                    ddb.getItem(request).getItem();
-            if (returned_item != null) {
-                Set<String> keys = returned_item.keySet();
-                for (String key : keys) {
-                    System.out.format("%s: %s\n",
-                            key, returned_item.get(key).toString());
-                }
-            } else {
-                System.out.format("No item found with the key %s!\n", search);
-            }
-        } catch (AmazonServiceException e) {
-            System.err.println(e.getErrorMessage());
-            System.exit(1);
+        HashSet<String> result = new HashSet<>();
+        ItemCollection<QueryOutcome> items = table.query(PRIMARY_KEY,search);
+        for (Item i:
+             items) {
+            result.add((String) i.get("value"));
         }
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return result;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean exists(String search) {//TODO: Implement this method
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (get(search).size()>0)
+            return true;
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -78,38 +104,30 @@ public class DynamoDBStorage extends BasicKeyValueStore {
 
     @Override
     public void addToSet(String keyword, String value) {//TODO: Implement this method
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        put(keyword,value);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void put(String keyword, String value) {//TODO: Implement this method
-        HashMap<String,AttributeValue> item_values =
-                new HashMap<String,AttributeValue>();
-
-        item_values.put("keyword", new AttributeValue(keyword));
-
-        /*for (String[] field : extra_fields) {
-            item_values.put(field[0], new AttributeValue(field[1]));
-        }*/
-
-        final AmazonDynamoDB ddb = AmazonDynamoDBClientBuilder.defaultClient();
-
         try {
-            ddb.putItem(dbName, item_values);
-        } catch (ResourceNotFoundException e) {
-            System.err.format("Error: The table \"%s\" can't be found.\n", dbName);
-            System.err.println("Be sure that it exists and that you've typed its name correctly!");
-            System.exit(1);
-        } catch (AmazonServiceException e) {
+            Item item = new Item()
+                    .withPrimaryKey("keyword",keyword,"inx",inx)
+                    .withString("value",value);
+            table.putItem(item);
+            System.out.println("Successfully added in "+ dbName+ ": "+ keyword + " - "+ value + "- inx: "+inx);
+        }catch (Exception e){
+            System.err.println("Unable to add "+ dbName+ ": "+ keyword + " - "+ value + "- inx: "+inx);
             System.err.println(e.getMessage());
-            System.exit(1);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        inx++;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void close() {//TODO: Implement this method
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dynamoDB.shutdown();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override

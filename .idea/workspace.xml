@@ -4,12 +4,9 @@
     <list default="true" id="b932b2bf-dd8f-42df-a9f0-61d228314726" name="Default Changelist" comment="Query completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mx/iteso/desi/cloud/lp1/IndexImages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mx/iteso/desi/cloud/lp1/IndexImages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mx/iteso/desi/cloud/lp1/QueryImages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mx/iteso/desi/cloud/lp1/QueryImages.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,17 +20,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="104" selection-start-line="19" selection-start-column="104" selection-end-line="19" selection-end-column="104" />
+            <state relative-caret-position="323">
+              <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="442">
+              <caret line="70" column="23" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -41,18 +47,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+            <state relative-caret-position="156">
+              <caret line="38" column="74" lean-forward="true" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#354#355#0" expanded="true" />
-                <element signature="e#390#391#0" expanded="true" />
-                <element signature="e#1189#1213#0" expanded="true" />
-                <element signature="e#3215#3238#0" expanded="true" />
-                <element signature="e#4701#4702#0" expanded="true" />
-                <element signature="e#4729#4730#0" expanded="true" />
-                <element signature="e#4797#4798#0" expanded="true" />
-                <element signature="e#4824#4825#0" expanded="true" />
+                <element signature="e#5356#5357#0" expanded="true" />
+                <element signature="e#5451#5452#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,16 +71,20 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/BdbStorage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="391">
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+              <folding>
+                <element signature="e#1068#1069#0" expanded="true" />
+                <element signature="e#1099#1100#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,18 +105,17 @@
         <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/ParseTriples.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/BasicKeyValueStore.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-408" />
-    <option name="y" value="-18" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -175,13 +178,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Course" />
       <pane id="PackagesPane" />
+      <pane id="Course" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550974765163" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550974849976" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
   <component name="RunDashboard">
@@ -196,7 +199,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.QueryImages">
+  <component name="RunManager" selected="Application.IndexImages">
     <configuration name="IndexImages" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="mx.iteso.desi.cloud.lp1.IndexImages" />
       <module name="CC_LP1MS1" />
@@ -213,7 +216,7 @@
     <configuration name="QueryImages" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="mx.iteso.desi.cloud.lp1.QueryImages" />
       <module name="CC_LP1MS1" />
-      <option name="PROGRAM_PARAMETERS" value="America" />
+      <option name="PROGRAM_PARAMETERS" value="ARC" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="mx.iteso.desi.cloud.lp1.*" />
@@ -277,8 +280,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.QueryImages" />
         <item itemvalue="Application.IndexImages" />
+        <item itemvalue="Application.QueryImages" />
       </list>
     </recent_temporary>
   </component>
@@ -299,7 +302,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18336888" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.084754795" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -308,7 +311,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -317,7 +320,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -361,13 +364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="94" column="3" lean-forward="true" selection-start-line="94" selection-start-column="3" selection-end-line="94" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -378,35 +374,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="123" column="19" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+          <folding>
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/BdbStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="104" selection-start-line="19" selection-start-column="104" selection-end-line="19" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#1189#1213#0" expanded="true" />
-            <element signature="e#3215#3238#0" expanded="true" />
-            <element signature="e#4701#4702#0" expanded="true" />
-            <element signature="e#4729#4730#0" expanded="true" />
-            <element signature="e#4797#4798#0" expanded="true" />
-            <element signature="e#4824#4825#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -417,17 +413,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/BdbStorage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/DynamoDBStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="156">
+          <caret line="38" column="74" lean-forward="true" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5356#5357#0" expanded="true" />
+            <element signature="e#5451#5452#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/keyvalue/MemStorage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/QueryImages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+        <state relative-caret-position="442">
+          <caret line="70" column="23" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/iteso/desi/cloud/lp1/IndexImages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
         </state>
       </provider>
     </entry>
